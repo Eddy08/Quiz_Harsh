@@ -1,0 +1,32 @@
+<div class="h-full w-full" *ngIf="ques!==10">
+    <div class="font-mono font-extrabold" *ngIf="started">
+        Question <span>{{ques}}</span>
+    </div>
+<div class="grid place-content-center h-full w-full" *ngIf="started">
+
+    <div>
+        <span *ngIf="isNaN(leftOperand) || isNaN(rightOperand) || Operator==='🤕'" matTooltip="Try to Refresh the Page ... Sorry for Problem 🙈">Something Broke <mat-icon class="material-icons-round text-red-800">heart_broken</mat-icon></span>
+         
+        <span *ngIf="!isNaN(leftOperand)">{{leftOperand}}</span>
+        <span>{{Operator}}</span>
+        <span *ngIf="!isNaN(rightOperand)">{{rightOperand}} </span>
+        
+    </div>
+    <div *ngIf="!(isNaN(leftOperand) || isNaN(rightOperand) ||  Operator==='🤕')">
+        <mat-form-field class="" appearance="outline">
+        <mat-label>Answer <span class="material-icons text-white">border_color</span></mat-label>
+        <input matInput placeholder="" value="" type="number" #answer autofocus="true"  (keydown.enter)="ques=ques+1;nextQuestion();storeAnswer(ques,leftOperand,rightOperand,Operator,+answer.value)">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="ques=ques+1;storeAnswer(ques,leftOperand,rightOperand,Operator,+answer.value);nextQuestion();">Next <span class="material-icons text-green-500">arrow_forward</span></button>
+    </div>
+    </div>
+<div class="grid place-content-center h-full w-full" *ngIf="!started">
+<button mat-raised-button color="primary" (click)="started=true;nextQuestion()">Start<mat-icon class="fill-yellow-200">bolt</mat-icon></button>
+</div>
+</div>
+<div class="h-full w-full" *ngIf="ques===10">
+<span>Your Quiz is Completed ✅</span>
+    <div class="grid place-content-center">
+        {{arr |json}}
+    </div>
+</div>
