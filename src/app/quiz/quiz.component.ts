@@ -12,7 +12,7 @@ export class QuizComponent implements OnInit {
   started:boolean=false;
   question:any;
 
-  ques:number=1;
+  ques:number=0;
   leftOperand:number=NaN;
   rightOperand:number=NaN;
   Operator:string="🤕";
@@ -27,6 +27,10 @@ export class QuizComponent implements OnInit {
     this.leftOperand=this.generator.generateRandomNumber();
     this.rightOperand=this.generator.generateRandomNumber();
     this.Operator=this.generator.generateRandomOperator();
+  }
+  firstQuestion(){
+    this.nextQuestion();
+    
   }
   storeAnswer(questionNumber:number,leftOp:number,rightOp:number,Operator:string,submittedAnswer:number){
    let correctAnswer=NaN;
