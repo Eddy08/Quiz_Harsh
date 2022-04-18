@@ -31,8 +31,8 @@ export class QuizComponent implements OnInit {
   storeAnswer(questionNumber:number,leftOp:number,rightOp:number,Operator:string,submittedAnswer:number){
    let correctAnswer=NaN;
     switch (Operator) {
-      case '%':
-        correctAnswer=leftOp%rightOp;
+      case '/':
+        correctAnswer=leftOp/rightOp;
         break;
       case '+':
         correctAnswer=leftOp+rightOp;
