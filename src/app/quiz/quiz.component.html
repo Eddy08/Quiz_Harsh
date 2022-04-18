@@ -1,6 +1,6 @@
-<div class="h-full w-full" *ngIf="ques!==10">
+<div class="h-full w-full" *ngIf="ques!==quesLimit">
     <div class="font-mono font-extrabold" *ngIf="started">
-        Question <span>{{ques}}</span>
+        Question <span>{{ques+1}}</span>
     </div>
 <div class="grid place-content-center h-full w-full" *ngIf="started">
 
@@ -21,10 +21,23 @@
     </div>
     </div>
 <div class="grid place-content-center h-full w-full" *ngIf="!started">
+   <mat-form-field class="" appearance="fill">
+        <mat-label> Number Of Questions </mat-label>
+        <input matInput placeholder="10 Questions ⏲" [(ngModel)]="quesLimit" type="number" autofocus="true">
+      </mat-form-field>
+      <h2>Numbers between</h2>
+      <mat-form-field class="" appearance="fill">
+        <mat-label> Start </mat-label>
+        <input matInput placeholder="1" [(ngModel)]="numberStart" type="number" autofocus="true">
+      </mat-form-field>
+      <mat-form-field class="" appearance="fill">
+        <mat-label> End </mat-label>
+        <input matInput placeholder="10" [(ngModel)]="numberEnd" type="number" autofocus="true">
+      </mat-form-field>
 <button mat-raised-button color="primary" (click)="started=true;nextQuestion()">Start<mat-icon class="fill-yellow-200">bolt</mat-icon></button>
 </div>
 </div>
-<div class="h-full w-full" *ngIf="ques===10">
+<div class="h-full w-full" *ngIf="ques===quesLimit">
 <span>Your Quiz is Completed ✅</span>
     <div class="grid grid-row-3 grid-cols-2 place-content-center">
         <div *ngFor="let a of arr">

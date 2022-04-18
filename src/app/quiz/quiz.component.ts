@@ -18,14 +18,17 @@ export class QuizComponent implements OnInit {
   Operator:string="🤕";
   isNaN:Function=Number.isNaN
   arr:any[]=[];
+  quesLimit:number=10;
+  numberStart:number=1;
+  numberEnd:number=10;
   constructor(private generator:DataGeneratorService) { }
 
   ngOnInit(): void {
    
   }
   nextQuestion(){
-    this.leftOperand=this.generator.generateRandomNumber();
-    this.rightOperand=this.generator.generateRandomNumber();
+    this.leftOperand=this.generator.generateRandomNumberWithRange(this.numberStart,this.numberEnd);
+    this.rightOperand=this.generator.generateRandomNumberWithRange(this.numberStart,this.numberEnd);
     this.Operator=this.generator.generateRandomOperator();
   }
   firstQuestion(){

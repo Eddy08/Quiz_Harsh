@@ -10,8 +10,8 @@ export class DataGeneratorService {
   generateRandomNumber(){
     return Math.floor(Math.random()*9+1);
   }
-  generateRandomNumberWithRange( range:number){
-    return Math.floor(Math.random()*range+1);
+  generateRandomNumberWithRange( rangeStart:number,rangeEnd:number){
+    return Math.floor(Math.random()*rangeEnd+rangeStart);
   }
   generateRandomOperator(){
     return this.arr[Math.floor(Math.random()*3)];
