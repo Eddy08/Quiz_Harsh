@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataGeneratorService {
 
   constructor() { }
-  arr:string[]=["+","-","%","*"];
+  arr:string[]=["+","-","/","*"];
   generateRandomNumber(){
     return Math.floor(Math.random()*9+1);
   }
